@@ -609,3 +609,161 @@ body::before {
         display: none;
     }
 }
+
+/* ============================================
+   🎬 Anime Input Area Styles
+   ============================================ */
+
+.anime-input-area {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px dashed rgba(255, 107, 157, 0.3);
+}
+
+.anime-command {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.anime-input {
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid var(--text-purple);
+    color: var(--text-green);
+    font-family: 'Fira Code', monospace;
+    font-size: 14px;
+    padding: 4px 8px;
+    outline: none;
+    width: 200px;
+    transition: all 0.3s ease;
+}
+
+.anime-input:focus {
+    border-bottom-color: #ff6b9d;
+    box-shadow: 0 2px 10px rgba(255, 107, 157, 0.3);
+}
+
+.anime-input::placeholder {
+    color: var(--text-gray);
+    opacity: 0.6;
+}
+
+.command-prefix,
+.command-suffix {
+    color: var(--text-gray);
+}
+
+.anime-hint {
+    font-size: 11px;
+    color: var(--text-gray);
+    margin-top: 8px;
+    padding-left: 24px;
+    opacity: 0.7;
+    animation: hintPulse 2s ease-in-out infinite;
+}
+
+@keyframes hintPulse {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 1; color: #ff6b9d; }
+}
+
+.anime-output {
+    animation: animeOutputAppear 0.4s ease-out;
+}
+
+@keyframes animeOutputAppear {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.anime-response {
+    position: relative;
+    overflow: hidden;
+}
+
+.anime-response::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        45deg,
+        transparent 0%,
+        rgba(255, 107, 157, 0.1) 50%,
+        transparent 100%
+    );
+    animation: shimmer 2s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+.anime-celebration {
+    animation: celebrationBounce 0.5s ease-out;
+    color: #ff6b9d !important;
+}
+
+@keyframes celebrationBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+/* Anime Particle Effects */
+.anime-particle {
+    position: fixed;
+    top: -50px;
+    z-index: 1000;
+    pointer-events: none;
+    animation: animeParticleFall linear forwards;
+}
+
+@keyframes animeParticleFall {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(110vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+/* Special glow for different anime series */
+.anime-response[style*="ffcc00"] {
+    box-shadow: 0 0 20px rgba(255, 204, 0, 0.3);
+}
+
+.anime-response[style*="ff6b9d"] {
+    box-shadow: 0 0 20px rgba(255, 107, 157, 0.3);
+}
+
+.anime-response[style*="00ff88"] {
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+}
+
+/* Responsive adjustments for anime input */
+@media (max-width: 600px) {
+    .anime-input {
+        width: 150px;
+        font-size: 12px;
+    }
+    
+    .anime-hint {
+        font-size: 10px;
+    }
+    
+    .anime-command {
+        font-size: 12px;
+    }
+}
